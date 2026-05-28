@@ -15,12 +15,12 @@ import {
   MapPin,
   MessageCircle,
   Phone,
-  Scale,
   ShieldCheck,
   Twitter,
   UsersRound,
 } from 'lucide-react';
 import './styles.css';
+import logo from './assets/unnati-chauhan-logo.png';
 
 const contact = {
   email: 'unnati.chauhan@example.com',
@@ -30,7 +30,7 @@ const contact = {
 };
 
 const socials = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/', icon: Linkedin },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/unnati-chauhan-309904211/', icon: Linkedin },
   { label: 'X', href: 'https://x.com/', icon: Twitter },
   { label: 'WhatsApp', href: `https://wa.me/919876543210`, icon: MessageCircle },
 ];
@@ -83,6 +83,24 @@ const reasons = [
   'Client communication that keeps timelines, documents and hearing updates organized.',
 ];
 
+const disclaimerStorageKey = 'unnati-chauhan-disclaimer-accepted';
+
+function hasAcceptedDisclaimer() {
+  try {
+    return window.localStorage.getItem(disclaimerStorageKey) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function saveDisclaimerAcceptance() {
+  try {
+    window.localStorage.setItem(disclaimerStorageKey, 'true');
+  } catch {
+    // The in-memory state still lets this visit continue if storage is unavailable.
+  }
+}
+
 function useRoute() {
   const readHashPath = () => {
     const hashPath = window.location.hash.replace(/^#/, '');
@@ -113,7 +131,7 @@ function Navbar({ path, navigate }) {
     <header className="site-header">
       <a className="brand" href="#/" onClick={(event) => routeClick(event, '/', navigate)}>
         <span className="brand-mark">
-          <Scale size={22} />
+          <img src={logo} alt="" />
         </span>
         <span>
           <strong>Unnati Chauhan</strong>
@@ -154,17 +172,15 @@ function Home({ navigate }) {
   return (
     <>
       <section className="hero">
-        <div className="hero-media" aria-hidden="true">
-          <div className="court-visual">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div className="hero-media">
+          <img src={logo} alt="Unnati Chauhan Law Offices logo" />
         </div>
         <div className="hero-copy">
           <p className="eyebrow">Advocate for complex civil, commercial and family disputes</p>
-          <h1>Advocate Unnati Chauhan</h1>
+          <h1 className="hero-title">
+            <span>Advocate</span>
+            Unnati Chauhan
+          </h1>
           <p>
             Practising in India with case experience across the Supreme Court, High Courts, RERA, NCLT and NCLAT.
             Her work focuses on insolvency and bankruptcy law, real estate disputes, arbitration, consumer matters,
@@ -337,9 +353,19 @@ function Contact() {
 function PageIntro({ kicker, title, text }) {
   return (
     <section className="page-intro">
-      <p className="eyebrow">{kicker}</p>
-      <h1>{title}</h1>
-      <p>{text}</p>
+      <div>
+        <p className="eyebrow">{kicker}</p>
+        <h1>{title}</h1>
+        <p>{text}</p>
+      </div>
+      <aside className="intro-panel" aria-label="Practice forums">
+        <img src={logo} alt="Unnati Chauhan Law Offices monogram" />
+        <div>
+          {courts.map((court) => (
+            <span key={court}>{court}</span>
+          ))}
+        </div>
+      </aside>
     </section>
   );
 }
@@ -375,7 +401,9 @@ function Footer({ navigate }) {
     <footer className="site-footer">
       <div>
         <div className="footer-brand">
-          <Scale size={28} />
+          <span className="footer-logo">
+            <img src={logo} alt="" />
+          </span>
           <span>Advocate Unnati Chauhan</span>
         </div>
         <p>
@@ -411,6 +439,53 @@ function Footer({ navigate }) {
   );
 }
 
+function DisclaimerGate() {
+  const [isAccepted, setIsAccepted] = useState(hasAcceptedDisclaimer);
+
+  const acceptDisclaimer = () => {
+    saveDisclaimerAcceptance();
+    setIsAccepted(true);
+  };
+
+  const declineDisclaimer = () => {
+    window.location.href = 'https://www.google.com';
+  };
+
+  if (isAccepted) return null;
+
+  return (
+    <div className="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+      <section className="disclaimer-dialog">
+        <div className="disclaimer-brand">
+          <img src={logo} alt="Unnati Chauhan Law Offices logo" />
+          <div>
+            <span>Unnati Chauhan</span>
+            <small>Law Offices</small>
+          </div>
+        </div>
+        <div className="disclaimer-copy">
+          <p className="section-kicker">Legal Notice</p>
+          <h2 id="disclaimer-title">Website Disclaimer</h2>
+          <p>
+            This website is intended only to provide general information about Advocate Unnati Chauhan and her areas of
+            practice. The content on this website does not constitute legal advice, advertising, solicitation or an
+            invitation to create an advocate-client relationship. By clicking Accept, you confirm that you are visiting
+            this website voluntarily for information purposes only.
+          </p>
+        </div>
+        <div className="disclaimer-actions">
+          <button type="button" className="primary-action" onClick={acceptDisclaimer}>
+            Accept
+          </button>
+          <button type="button" className="secondary-action" onClick={declineDisclaimer}>
+            Decline
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function App() {
   const { path, navigate } = useRoute();
   const Page = useMemo(() => {
@@ -426,6 +501,7 @@ function App() {
         <Page navigate={navigate} />
       </main>
       <Footer navigate={navigate} />
+      <DisclaimerGate />
     </div>
   );
 }
