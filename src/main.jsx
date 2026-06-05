@@ -2,11 +2,13 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowRight,
+  Briefcase,
   Building2,
   CheckCircle2,
   ChevronRight,
   Clock3,
   FileCheck2,
+  FileSearch,
   Gavel,
   Handshake,
   Landmark,
@@ -44,16 +46,16 @@ const navItems = [
 
 const courts = ['Supreme Court', 'High Courts', 'RERA', 'NCLT', 'NCLAT'];
 
-const services = [
+const practiceAreas = [
   {
-    title: 'Insolvency & Bankruptcy Law',
-    icon: Landmark,
-    text: 'Representation and advisory for insolvency proceedings, creditor-debtor disputes, resolution strategy and related company law issues.',
-  },
-  {
-    title: 'Real Estate & RERA',
+    title: 'RERA',
     icon: Building2,
     text: 'Developer-buyer disputes, delayed possession, refund claims, project compliance and real estate litigation before RERA authorities.',
+  },
+  {
+    title: 'IBC',
+    icon: Landmark,
+    text: 'Representation and advisory for insolvency proceedings, creditor-debtor disputes, resolution strategy and related company law issues.',
   },
   {
     title: 'Arbitration',
@@ -61,10 +63,24 @@ const services = [
     text: 'Pre-arbitration notices, interim relief, claim drafting, representation and enforcement support for commercial disputes.',
   },
   {
-    title: 'Consumer Matters',
+    title: 'Consumer Laws',
     icon: ShieldCheck,
     text: 'Consumer complaints, deficiency of service claims, unfair trade practice disputes and negotiated settlements.',
   },
+  {
+    title: 'Due Diligence',
+    icon: FileSearch,
+    text: 'Document review, title checks, compliance screening and risk assessment for transactions, projects and commercial arrangements.',
+  },
+  {
+    title: 'Consultancy & Advisory',
+    icon: Briefcase,
+    text: 'Early-stage legal guidance on strategy, notices, agreements, regulatory compliance and dispute prevention for businesses and individuals.',
+  },
+];
+
+const services = [
+  ...practiceAreas,
   {
     title: 'Family & Matrimonial Law',
     icon: UsersRound,
@@ -172,7 +188,7 @@ function routeClick(event, path, navigate) {
 function Home({ navigate }) {
   return (
     <>
-      <section className="hero">
+      <section className="hero" id="hero">
         <div className="hero-copy">
           <p className="eyebrow">Advocate for civil, commercial and family disputes</p>
           <h1 className="hero-title">
@@ -214,31 +230,46 @@ function Home({ navigate }) {
           <div className="hero-emblem">
             <img src={logo} alt="Unnati Chauhan Law Offices logo" />
           </div>
-          <div className="hero-panel">
-            <p>Law Offices</p>
-            <strong>Unnati Chauhan</strong>
-            <span>Advocate, India</span>
-            <div>
-              {courts.slice(0, 4).map((court) => (
-                <small key={court}>{court}</small>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="court-strip" aria-label="Forums handled">
-        {courts.map((court) => (
-          <span key={court}>{court}</span>
-        ))}
+      <section className="section about-office split" id="about">
+        <div>
+          <p className="section-kicker">About</p>
+          <h2>About the Office</h2>
+          <p>
+            Unnati Chauhan Law Offices is a Delhi-based practice focused on litigation, regulatory disputes and
+            structured legal advisory for individuals, homebuyers, businesses and professionals across India.
+          </p>
+          <p>
+            The office works with a drafting-led approach — mapping facts, documents, forums and timelines before
+            matters are filed, negotiated or taken to hearing. Consultations are by prior appointment, with virtual
+            meetings available for outstation clients.
+          </p>
+        </div>
+        <aside className="about-panel" aria-label="Practice forums">
+          <h3>Forums & Tribunals</h3>
+          <p>Representation and advisory support across the following forums:</p>
+          <div className="forum-tags">
+            {courts.map((court) => (
+              <span key={court}>{court}</span>
+            ))}
+          </div>
+        </aside>
       </section>
 
-      <LinkedInArticlesCarousel />
-
-      <section className="section split">
+      <section className="section split founder-section" id="founder">
         <div>
-          <p className="section-kicker">Career & Education</p>
-          <h2>A business-law foundation with litigation practice across forums.</h2>
+          <p className="section-kicker">Founder</p>
+          <h2>Advocate Unnati Chauhan</h2>
+          <p>
+            Advocate Unnati Chauhan leads the practice with experience across civil, commercial and family disputes
+            before courts, tribunals and regulatory authorities in India.
+          </p>
+          <p>
+            Her work combines early case assessment with careful drafting and forum-aware strategy — helping clients
+            understand reliefs, risks and practical next steps before litigation is escalated.
+          </p>
         </div>
         <div className="timeline">
           <article>
@@ -251,28 +282,28 @@ function Home({ navigate }) {
           </article>
           <article>
             <span>Practice</span>
-            <h3>Advocate handling litigation and advisory matters</h3>
+            <h3>Litigation and advisory across multiple forums</h3>
             <p>
-              Works with clients on strategy, drafting and representation in disputes before courts, tribunals and
-              statutory authorities.
+              Handles strategy, drafting and representation in disputes involving insolvency, real estate, arbitration,
+              consumer matters, due diligence and consultancy-led advisory work.
             </p>
           </article>
         </div>
       </section>
 
-      <section className="section practice-band">
-        <p className="section-kicker">Practice & Expertise</p>
-        <h2>Focused legal support for disputes where procedure, documents and timing matter.</h2>
-        <div className="service-grid compact">
-          {services.slice(0, 4).map((service) => (
+      <section className="section practice-band" id="practice">
+        <p className="section-kicker">Area of Practice</p>
+        <h2>Focused legal support across disputes, compliance and advisory mandates.</h2>
+        <div className="service-grid home-practice">
+          {practiceAreas.map((service) => (
             <ServiceCard key={service.title} service={service} />
           ))}
         </div>
       </section>
 
-      <section className="section why">
+      <section className="section why" id="why-us">
         <div>
-          <p className="section-kicker">Why Choose Her</p>
+          <p className="section-kicker">Why Choose Us</p>
           <h2>Calm advice, prepared drafting and forum-aware strategy.</h2>
           <p>
             Every matter is approached with a structured reading of facts, risks, reliefs and available remedies so
@@ -288,6 +319,8 @@ function Home({ navigate }) {
           ))}
         </div>
       </section>
+
+      <LinkedInArticlesCarousel />
     </>
   );
 }
