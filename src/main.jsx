@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import './styles.css';
 import logo from './assets/unnati-chauhan-logo.png';
+import LinkedInArticlesCarousel from './components/LinkedInArticlesCarousel';
 
 const contact = {
   email: 'unnati.chauhan@example.com',
@@ -172,27 +173,56 @@ function Home({ navigate }) {
   return (
     <>
       <section className="hero">
-        <div className="hero-media">
-          <img src={logo} alt="Unnati Chauhan Law Offices logo" />
-        </div>
         <div className="hero-copy">
-          <p className="eyebrow">Advocate for complex civil, commercial and family disputes</p>
+          <p className="eyebrow">Advocate for civil, commercial and family disputes</p>
           <h1 className="hero-title">
-            <span>Advocate</span>
-            Unnati Chauhan
+            <span>Prepared strategy. Clear advocacy.</span>
+            Legal support when the next step matters.
           </h1>
-          <p>
+          <p className="hero-motto">Measured counsel for urgent disputes, careful filings and practical resolution.</p>
+          <p className="hero-summary">
             Practising in India with case experience across the Supreme Court, High Courts, RERA, NCLT and NCLAT.
-            Her work focuses on insolvency and bankruptcy law, real estate disputes, arbitration, consumer matters,
-            family law and service law.
+            Her work focuses on insolvency, real estate, arbitration, consumer, family and service law matters.
           </p>
           <div className="hero-actions">
             <button className="primary-action" onClick={() => navigate('/contact')}>
               Book a Consultation <ArrowRight size={18} />
             </button>
             <button className="secondary-action" onClick={() => navigate('/services')}>
-              Explore Practice Areas
+              <Gavel size={18} /> Practice Areas
             </button>
+            <a className="quiet-action" href={`tel:${contact.phone.replaceAll(' ', '')}`}>
+              <Phone size={18} /> Call
+            </a>
+            <a className="quiet-action" href={socials.find((social) => social.label === 'WhatsApp')?.href}>
+              <MessageCircle size={18} /> WhatsApp
+            </a>
+          </div>
+          <div className="hero-proof" aria-label="Consultation focus">
+            <span>
+              <CheckCircle2 size={18} /> Case review
+            </span>
+            <span>
+              <Clock3 size={18} /> Prior appointment
+            </span>
+            <span>
+              <Landmark size={18} /> Multi-forum practice
+            </span>
+          </div>
+        </div>
+        <div className="hero-media" aria-label="Unnati Chauhan Law Offices">
+          <div className="hero-emblem">
+            <img src={logo} alt="Unnati Chauhan Law Offices logo" />
+          </div>
+          <div className="hero-panel">
+            <p>Law Offices</p>
+            <strong>Unnati Chauhan</strong>
+            <span>Advocate, India</span>
+            <div>
+              {courts.slice(0, 4).map((court) => (
+                <small key={court}>{court}</small>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -202,6 +232,8 @@ function Home({ navigate }) {
           <span key={court}>{court}</span>
         ))}
       </section>
+
+      <LinkedInArticlesCarousel />
 
       <section className="section split">
         <div>
