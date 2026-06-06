@@ -76,6 +76,8 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 16 / 9;
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(1, 50, 32, 0.96), rgba(11, 61, 46, 0.78)),
@@ -92,6 +94,9 @@
 }
 
 .linkedin-card-image img {
+  display: block;
+  width: 70%;
+  height: 100%;
   display: block;
   width: 70%;
   height: 100%;
