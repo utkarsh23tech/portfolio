@@ -39,7 +39,7 @@ function LinkedInArticlesCarousel() {
       <div className="linkedin-section-header">
         <div>
           <p className="section-kicker">LinkedIn Articles</p>
-          <h2 id="linkedin-articles-title">Recent legal notes and practical case insights.</h2>
+          <h2 id="linkedin-articles-title">Recent Highlights</h2>
         </div>
         <div className="carousel-controls" aria-label="Article carousel controls">
           <button type="button" onClick={previous} disabled={activeIndex === 0} aria-label="Previous articles">

@@ -1,11 +1,21 @@
 import { ArrowUpRight, Linkedin } from 'lucide-react';
-import logo from '../assets/unnati-chauhan-logo.png';
 
 function LinkedInArticleCard({ article }) {
+  const hasImage = Boolean(article.imageHref);
+
   return (
     <article className="linkedin-card">
-      <div className={`linkedin-card-image tone-${article.imageTone}`}>
-        <img src={logo} alt="" />
+      <div
+        className={`linkedin-card-image tone-${article.imageTone}${hasImage ? ' has-photo' : ''}`}
+      >
+        {hasImage ? (
+          <img
+            src={article.imageHref}
+            alt={article.imageAlt ?? article.title}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : null}
         <span>{article.category}</span>
       </div>
       <div className="linkedin-card-copy">
