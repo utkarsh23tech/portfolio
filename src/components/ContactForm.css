@@ -1,0 +1,52 @@
+.contact-form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form-turnstile {
+  min-height: 65px;
+}
+
+.contact-form-config {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px dashed rgba(11, 61, 46, 0.28);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  background: rgba(245, 241, 232, 0.55);
+}
+
+.contact-form-config code {
+  color: var(--forest-shadow);
+  font-size: 0.82rem;
+}
+
+.contact-form-status {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.contact-form-status.success {
+  color: var(--forest-shadow);
+  background: rgba(198, 167, 105, 0.22);
+  border: 1px solid rgba(198, 167, 105, 0.45);
+}
+
+.contact-form-status.error {
+  color: #7a1f1f;
+  background: rgba(180, 48, 48, 0.1);
+  border: 1px solid rgba(180, 48, 48, 0.24);
+}
+
+.contact-form .primary-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
