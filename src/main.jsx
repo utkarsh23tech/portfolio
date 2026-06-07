@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import './styles.css';
 import logo from './assets/unnati-chauhan-logo.png';
+import ContactForm from './components/ContactForm';
 import LinkedInArticlesCarousel from './components/LinkedInArticlesCarousel';
 
 const contact = {
@@ -382,34 +383,7 @@ function Contact() {
             <span>Consultations by prior appointment. Virtual meetings available for outstation clients.</span>
           </div>
         </div>
-        <form className="contact-form">
-          <label>
-            Name
-            <input type="text" placeholder="Your full name" />
-          </label>
-          <label>
-            Email
-            <input type="email" placeholder="you@example.com" />
-          </label>
-          <label>
-            Matter Type
-            <select defaultValue="">
-              <option value="" disabled>
-                Select a practice area
-              </option>
-              {services.map((service) => (
-                <option key={service.title}>{service.title}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Brief Case Note
-            <textarea placeholder="Mention the court/forum, case stage, dates and urgent deadlines." rows="5"></textarea>
-          </label>
-          <button type="button" className="primary-action">
-            Send Enquiry <ChevronRight size={18} />
-          </button>
-        </form>
+        <ContactForm services={services} />
       </section>
     </>
   );
