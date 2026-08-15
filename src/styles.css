@@ -808,11 +808,18 @@ p {
   margin-bottom: 16px;
 }
 
+.footer-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .footer-logo {
   display: block;
-  height: 56px;
+  height: 100px;
   width: auto;
   border-radius: 4px;
+  padding-right: 20px;
 }
 
 .disclaimer {
