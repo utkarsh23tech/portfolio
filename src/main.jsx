@@ -49,56 +49,82 @@ const courts = ['Supreme Court', 'High Courts', 'RERA', 'NCLT', 'NCLAT'];
 
 const practiceAreas = [
   {
-    title: 'RERA',
-    icon: Building2,
-    text: 'Developer-buyer disputes, delayed possession, refund claims, project compliance and real estate litigation before RERA authorities.',
+    title: 'Real Estate Laws',
+    icon: Landmark,
+    text: 'Representation in property disputes, RERA proceedings, developer–buyer disputes, title issues, delayed possession, refund claims, and real estate advisory.',
   },
   {
-    title: 'IBC',
-    icon: Landmark,
-    text: 'Representation and advisory for insolvency proceedings, creditor-debtor disputes, resolution strategy and related company law issues.',
+    title: 'Insolvency & Bankruptcy Code (IBC)',
+    icon: Handshake,
+    text: 'Advising financial and operational creditors, corporate debtors, and stakeholders in insolvency proceedings before the NCLT under the Insolvency and Bankruptcy Code.',
   },
   {
     title: 'Arbitration',
-    icon: Handshake,
-    text: 'Pre-arbitration notices, interim relief, claim drafting, representation and enforcement support for commercial disputes.',
+    icon: ShieldCheck,
+    text: 'Comprehensive arbitration support, including drafting arbitration notices, claims and pleadings, interim relief proceedings, arbitral representation, and enforcement of awards.',
   },
   {
-    title: 'Consumer Laws',
-    icon: ShieldCheck,
-    text: 'Consumer complaints, deficiency of service claims, unfair trade practice disputes and negotiated settlements.',
+    title: 'Consumer Law',
+    icon: FileSearch,
+    text: 'Representation before Consumer Commissions in matters involving deficiency of service, unfair trade practices, product liability, and consumer compensation claims.',
+  },
+  {
+    title: 'Recovery Matters',
+    icon: Briefcase,
+    text: 'Legal assistance in recovery of outstanding dues through civil proceedings, commercial recovery actions, summary suits, cheque dishonour matters, and other statutory remedies.',
+  },
+  {
+    title: 'Criminal Law',
+    icon: Briefcase,
+    text: 'Representation in criminal investigations and proceedings, including bail applications, complaints, trial proceedings, criminal revisions, and allied criminal litigation.',
+  },
+  {
+    title: 'Intellectual Property Rights (IPR)',
+    icon: Briefcase,
+    text: 'Advisory and representation relating to trademarks, copyrights, intellectual property protection, infringement disputes, and brand protection strategies.',
   },
   {
     title: 'Due Diligence',
-    icon: FileSearch,
-    text: 'Document review, title checks, compliance screening and risk assessment for transactions, projects and commercial arrangements.',
+    icon: Briefcase,
+    text: 'Comprehensive legal due diligence, title verification, contract review, compliance assessment, and risk analysis for commercial transactions and investments.',
   },
   {
-    title: 'Consultancy & Advisory',
+    title: 'Consultancy & Legal Advisory',
     icon: Briefcase,
-    text: 'Early-stage legal guidance on strategy, notices, agreements, regulatory compliance and dispute prevention for businesses and individuals.',
+    text: 'Strategic legal opinions, contract drafting and review, regulatory compliance, transaction structuring, risk assessment, and preventive legal advisory for individuals and businesses.',
   },
 ];
 
 const services = [
   ...practiceAreas,
-  {
-    title: 'Family & Matrimonial Law',
-    icon: UsersRound,
-    text: 'Divorce, maintenance, custody, domestic issues, family settlements and sensitive dispute resolution with careful client communication.',
-  },
-  {
-    title: 'Service Law',
-    icon: FileCheck2,
-    text: 'Employment, disciplinary, appointment, promotion, termination and benefits-related matters for employees and institutions.',
-  },
 ];
 
 const reasons = [
-  'Multi-forum practice exposure across courts, tribunals and regulatory authorities.',
-  'Clear case assessment with practical next steps before litigation is escalated.',
-  'Drafting-led strategy for notices, petitions, replies, settlement terms and appeals.',
-  'Client communication that keeps timelines, documents and hearing updates organized.',
+  {
+    title: 'Meticulous Drafting & Case Preparation',
+    text: 'Every matter is built on thorough legal research, detailed drafting, and careful analysis of facts to present the strongest possible case from the very beginning.',
+  },
+  {
+    title: 'Representation Across Multiple Forums',
+    text: 'Representation before the Supreme Court of India, High Courts, NCLT, RERA, Consumer Commissions, District Courts, and various judicial forums, tribunals, and statutory authorities.',
+  },
+  {
+    title: 'Strategic, Solution-Oriented Advice',
+    text: 'Legal advice focused not only on the law but also on practical, commercially viable, and time-efficient solutions that align with each client\'s objectives.',
+  },
+  {
+    title: 'Transparent Communication',
+    text: 'Clients remain informed at every stage through clear guidance, timely updates, and straightforward advice, ensuring they understand the process and available legal options.',
+  },
+  {
+    title: 'Personalised Attention to Every Matter',
+    text: 'Every case receives direct involvement, careful planning, and tailored legal strategies instead of a one-size-fits-all approach.',
+  },
+  {
+    title: 'From Advisory to Final Resolution',
+    text: 'Comprehensive legal support from initial consultation and due diligence to negotiations, litigation, appeals, enforcement, and post-judgment assistance.',
+  },
+
 ];
 
 const disclaimerStorageKey = 'unnati-chauhan-disclaimer-accepted';
@@ -148,13 +174,7 @@ function Navbar({ path, navigate }) {
   return (
     <header className="site-header">
       <a className="brand" href="#/" onClick={(event) => routeClick(event, '/', navigate)}>
-        <span className="brand-mark">
-          <img src={logo} alt="" />
-        </span>
-        <span>
-          <strong>Unnati Chauhan</strong>
-          <small>Advocate, India</small>
-        </span>
+        <img className="brand-logo" src={logo} alt="Law Office of Unnati Chauhan" />
       </a>
 
       <nav className="nav-links" aria-label="Primary navigation">
@@ -229,7 +249,7 @@ function Home({ navigate }) {
         </div>
         <div className="hero-media" aria-label="Unnati Chauhan Law Offices">
           <div className="hero-emblem">
-            <img src={logo} alt="Unnati Chauhan Law Offices logo" />
+            <img src={logo} alt="Law Office of Unnati Chauhan" />
           </div>
         </div>
       </section>
@@ -239,13 +259,12 @@ function Home({ navigate }) {
           <p className="section-kicker">About</p>
           <h2>About the Office</h2>
           <p>
-            Unnati Chauhan Law Offices is a Delhi-based practice focused on litigation, regulatory disputes and
-            structured legal advisory for individuals, homebuyers, businesses and professionals across India.
+          Founded in 2024 by Advocate Unnati Chauhan, the Law Office of Unnati Chauhan is a Delhi NCR-based independent law practice committed to delivering strategic, practical, and result-oriented legal solutions. 
+          The office represents individuals, businesses, financial institutions, and commercial entities, combining meticulous legal analysis, precise drafting, and effective advocacy to safeguard clients' interests at every stage of a dispute or transaction.
           </p>
           <p>
-            The office works with a drafting-led approach — mapping facts, documents, forums and timelines before
-            matters are filed, negotiated or taken to hearing. Consultations are by prior appointment, with virtual
-            meetings available for outstation clients.
+          The practice advises and represents clients in matters relating to Insolvency & Bankruptcy (IBC), Real Estate and RERA, Consumer Disputes, Family Disputes, Criminal Matters, Recovery Proceedings, Legal Advisory, and Due Diligence, as well as a broad range of commercial and civil disputes. 
+          Guided by the principles of integrity, professionalism, and client-focused service, the office is dedicated to providing pragmatic legal solutions and effective representation before courts, tribunals, and regulatory authorities across India.
           </p>
         </div>
         <aside className="about-panel" aria-label="Practice forums">
@@ -264,29 +283,28 @@ function Home({ navigate }) {
           <p className="section-kicker">Founder</p>
           <h2>Advocate Unnati Chauhan</h2>
           <p>
-            Advocate Unnati Chauhan leads the practice with experience across civil, commercial and family disputes
-            before courts, tribunals and regulatory authorities in India.
+          Advocate Unnati Chauhan is the Founder of the Law Office of Unnati Chauhan, established in 2024. 
+          Based in Delhi NCR, her practice encompasses litigation, dispute resolution, and legal advisory across diverse areas of law. 
           </p>
-          <p>
-            Her work combines early case assessment with careful drafting and forum-aware strategy — helping clients
-            understand reliefs, risks and practical next steps before litigation is escalated.
-          </p>
+          <p>She regularly appears and advises clients before the Supreme Court of India, High Courts, National Company Law Tribunal (NCLT), 
+          Real Estate Regulatory Authority (RERA), Consumer Commissions, District Courts, and various other judicial forums, tribunals, 
+          and statutory authorities across India.</p>
         </div>
         <div className="timeline">
           <article>
             <span>Education</span>
-            <h3>BBA LL.B.</h3>
+            <h3>B.B.A. LL.B.</h3>
+            <h4>ICFAI University, Dehradun</h4>
             <p>
               Graduated from ICFAI University, Dehradun: Institute of Chartered Financial Analysts of India
               University, Dehradun.
             </p>
           </article>
           <article>
-            <span>Practice</span>
-            <h3>Litigation and advisory across multiple forums</h3>
+            <span>Courts & Forums</span>
+            <h3>Appearances Before Courts, Tribunals & Regulatory Authorities</h3>
             <p>
-              Handles strategy, drafting and representation in disputes involving insolvency, real estate, arbitration,
-              consumer matters, due diligence and consultancy-led advisory work.
+            Regularly represents and advises clients before the Supreme Court of India, High Courts, National Company Law Tribunal (NCLT), Real Estate Regulatory Authority (RERA), Consumer Commissions, District Courts, and a wide range of judicial forums, tribunals, and statutory authorities across India.
             </p>
           </article>
         </div>
@@ -294,7 +312,8 @@ function Home({ navigate }) {
 
       <section className="section practice-band" id="practice">
         <p className="section-kicker">Area of Practice</p>
-        <h2>Focused legal support across disputes, compliance and advisory mandates.</h2>
+        <h3>Legal Expertise Across Diverse Practice Areas</h3>
+        <p>Providing strategic representation, effective dispute resolution, and trusted legal advisory across a broad spectrum of practice areas.</p>
         <div className="service-grid home-practice">
           {practiceAreas.map((service) => (
             <ServiceCard key={service.title} service={service} />
@@ -304,19 +323,19 @@ function Home({ navigate }) {
 
       <section className="section why" id="why-us">
         <div>
-          <p className="section-kicker">Why Choose Us</p>
-          <h2>Calm advice, prepared drafting and forum-aware strategy.</h2>
+          <p className="section-kicker">Out Approach</p>
+          <h3>Trusted Counsel. Strategic Representation. Practical Solutions.</h3>
           <p>
-            Every matter is approached with a structured reading of facts, risks, reliefs and available remedies so
-            clients can decide with confidence.
+          Every legal matter deserves careful preparation, clear communication, and a strategy tailored to the client's objectives. 
+          We combine meticulous legal drafting with practical advice and dedicated representation to help clients navigate complex disputes with confidence.
           </p>
         </div>
         <div className="reason-list">
           {reasons.map((reason) => (
-            <div key={reason}>
-              <CheckCircle2 size={20} />
-              <span>{reason}</span>
-            </div>
+            <article key={reason.title} className="reason-item">
+              <h3>{reason.title}</h3>
+              <p>{reason.text}</p>
+            </article>
           ))}
         </div>
       </section>
@@ -398,7 +417,7 @@ function PageIntro({ kicker, title, text }) {
         <p>{text}</p>
       </div>
       <aside className="intro-panel" aria-label="Practice forums">
-        <img src={logo} alt="Unnati Chauhan Law Offices monogram" />
+        <img src={logo} alt="Law Office of Unnati Chauhan" />
         <div>
           {courts.map((court) => (
             <span key={court}>{court}</span>
@@ -440,10 +459,7 @@ function Footer({ navigate }) {
     <footer className="site-footer">
       <div>
         <div className="footer-brand">
-          <span className="footer-logo">
-            <img src={logo} alt="" />
-          </span>
-          <span>Advocate Unnati Chauhan</span>
+          <img className="footer-logo" src={logo} alt="Law Office of Unnati Chauhan" />
         </div>
         <p>
           Legal representation and advisory support for insolvency, real estate, arbitration, consumer, family and
@@ -496,11 +512,7 @@ function DisclaimerGate() {
     <div className="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
       <section className="disclaimer-dialog">
         <div className="disclaimer-brand">
-          <img src={logo} alt="Unnati Chauhan Law Offices logo" />
-          <div>
-            <span>Unnati Chauhan</span>
-            <small>Law Offices</small>
-          </div>
+          <img src={logo} alt="Law Office of Unnati Chauhan" />
         </div>
         <div className="disclaimer-copy">
           <p className="section-kicker">Legal Notice</p>
