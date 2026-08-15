@@ -2,23 +2,24 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowRight,
-  Briefcase,
-  Building2,
   CheckCircle2,
   ChevronRight,
   Clock3,
-  FileCheck2,
-  FileSearch,
   Gavel,
   Handshake,
   Landmark,
+  Scale,
   Linkedin,
+  Copyright,
+  Banknote,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
+  MessageSquareText,
   ShieldCheck,
   Twitter,
+  ClipboardCheck,
   UsersRound,
 } from 'lucide-react';
 import './styles.css';
@@ -27,16 +28,16 @@ import ContactForm from './components/ContactForm';
 import LinkedInArticlesCarousel from './components/LinkedInArticlesCarousel';
 
 const contact = {
-  email: 'unnati.chauhan@example.com',
-  phone: '+91 98765 43210',
-  address: 'Chamber / Consultation Office, New Delhi, India',
+  email: 'adv.unnatichauhan@gmail.com',
+  phone: '+91 63863 78267',
+  address: 'B-230, Block B, Sector 71, Noida, Uttar Pradesh - 201307',
   location: 'Available for matters across Supreme Court of India, High Courts, RERA, NCLT and NCLAT.',
 };
 
 const socials = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/unnati-chauhan-309904211/', icon: Linkedin },
   { label: 'X', href: 'https://x.com/', icon: Twitter },
-  { label: 'WhatsApp', href: `https://wa.me/919876543210`, icon: MessageCircle },
+  { label: 'WhatsApp', href: `https://wa.me/916386378267`, icon: MessageCircle },
 ];
 
 const navItems = [
@@ -45,7 +46,7 @@ const navItems = [
   { label: 'Contact Us', path: '/contact' },
 ];
 
-const courts = ['Supreme Court', 'High Courts', 'RERA', 'NCLT', 'NCLAT'];
+const courts = ['Supreme Court', 'High Courts', 'RERA', 'NCLT', 'Consumer Court'];
 
 const practiceAreas = [
   {
@@ -60,37 +61,37 @@ const practiceAreas = [
   },
   {
     title: 'Arbitration',
-    icon: ShieldCheck,
+    icon: Scale,
     text: 'Comprehensive arbitration support, including drafting arbitration notices, claims and pleadings, interim relief proceedings, arbitral representation, and enforcement of awards.',
   },
   {
     title: 'Consumer Law',
-    icon: FileSearch,
+    icon: ShieldCheck,
     text: 'Representation before Consumer Commissions in matters involving deficiency of service, unfair trade practices, product liability, and consumer compensation claims.',
   },
   {
     title: 'Recovery Matters',
-    icon: Briefcase,
+    icon: Banknote,
     text: 'Legal assistance in recovery of outstanding dues through civil proceedings, commercial recovery actions, summary suits, cheque dishonour matters, and other statutory remedies.',
   },
   {
     title: 'Criminal Law',
-    icon: Briefcase,
+    icon: Gavel,
     text: 'Representation in criminal investigations and proceedings, including bail applications, complaints, trial proceedings, criminal revisions, and allied criminal litigation.',
   },
   {
     title: 'Intellectual Property Rights (IPR)',
-    icon: Briefcase,
+    icon: Copyright,
     text: 'Advisory and representation relating to trademarks, copyrights, intellectual property protection, infringement disputes, and brand protection strategies.',
   },
   {
     title: 'Due Diligence',
-    icon: Briefcase,
+    icon: ClipboardCheck,
     text: 'Comprehensive legal due diligence, title verification, contract review, compliance assessment, and risk analysis for commercial transactions and investments.',
   },
   {
     title: 'Consultancy & Legal Advisory',
-    icon: Briefcase,
+    icon: MessageSquareText,
     text: 'Strategic legal opinions, contract drafting and review, regulatory compliance, transaction structuring, risk assessment, and preventive legal advisory for individuals and businesses.',
   },
 ];
@@ -268,8 +269,9 @@ function Home({ navigate }) {
           </p>
         </div>
         <aside className="about-panel" aria-label="Practice forums">
-          <h3>Forums & Tribunals</h3>
-          <p>Representation and advisory support across the following forums:</p>
+          <h3>Courts & Forums</h3>
+          <h4>Appearances Before Courts, Tribunals & Regulatory Authorities</h4>
+          <p>Regularly represents and advises clients before the Supreme Court of India, High Courts, National Company Law Tribunal (NCLT), Real Estate Regulatory Authority (RERA), Consumer Commissions, District Courts, and a wide range of judicial forums, tribunals, and statutory authorities across India.</p>
           <div className="forum-tags">
             {courts.map((court) => (
               <span key={court}>{court}</span>
@@ -457,19 +459,21 @@ function ContactLine({ icon: Icon, label, value, href }) {
 function Footer({ navigate }) {
   return (
     <footer className="site-footer">
-      <div>
+      <div className="footer-text">
         <div className="footer-brand">
           <img className="footer-logo" src={logo} alt="Law Office of Unnati Chauhan" />
         </div>
+        <div>
         <p>
           Legal representation and advisory support for insolvency, real estate, arbitration, consumer, family and
           service law matters in India.
         </p>
-        <p className="disclaimer">
-          This website is for informational purposes only and does not constitute advertising, solicitation or legal
-          advice. No advocate-client relationship is created by viewing this website.
+         <p className="disclaimer">
+          This website is for informational purposes only and does not constitute advertising, solicitation or legal advice. No advocate-client relationship is created by viewing this website.
         </p>
+        </div>
       </div>
+      
       <div>
         <h3>Quick Links</h3>
         {navItems.map((item) => (
