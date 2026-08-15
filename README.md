@@ -18,6 +18,8 @@ The site includes:
 - Lucide React icons
 - CSS
 
+
+
 ## Project Structure
 
 ```text
@@ -30,6 +32,8 @@ The site includes:
 │   └── styles.css
 └── README.md
 ```
+
+
 
 ## Prerequisites
 
@@ -49,6 +53,8 @@ From the project folder, run:
 ```bash
 npm install
 ```
+
+
 
 ## Run Locally
 
@@ -85,8 +91,10 @@ dist/
 This project is configured for GitHub Pages under the repository path:
 
 ```text
-https://utkarsh23tech.github.io/portfolio/
+https://utkarsh23tech.github.io/unnati-chauhan-website/
 ```
+
+
 
 ## Preview Production Build
 
@@ -117,6 +125,8 @@ The workflow builds the React app and deploys the `dist/` folder to GitHub Pages
 5. Under `Build and deployment`, set `Source` to `GitHub Actions`.
 6. Save the setting if GitHub asks you to.
 
+
+
 ### Push and Deploy
 
 Run these commands from the project folder:
@@ -137,6 +147,8 @@ After the push finishes:
 ```text
 https://utkarsh23tech.github.io/portfolio/
 ```
+
+
 
 ### Local GitHub Pages Preview
 
@@ -192,3 +204,4 @@ npm run dev
 npm run build
 npm run preview
 ```
+
