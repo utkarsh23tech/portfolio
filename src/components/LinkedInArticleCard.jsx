@@ -11,7 +11,7 @@ function LinkedInArticleCard({ article }) {
         {hasImage ? (
           <img
             src={article.imageHref}
-            referrerpolicy="no-referrer"
+            referrerPolicy="no-referrer"
             alt={article.imageAlt ?? article.title}
             loading="lazy"
             decoding="async"
